@@ -1,0 +1,134 @@
+/* Reset dasar */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  background-color: #fff0f6;
+  color: #333;
+}
+
+header {
+  text-align: center;
+  padding: 25px;
+  background-color: #ffb6d9;
+  color: white;
+  border-radius: 0 0 20px 20px;
+  box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.1);
+}
+
+.header-img {
+  width: 100px;
+  margin-bottom: 10px;
+}
+
+.container {
+  max-width: 650px;
+  margin: 30px auto;
+  padding: 25px;
+  background-color: white;
+  border-radius: 15px;
+  box-shadow: 0px 3px 12px rgba(0, 0, 0, 0.12);
+}
+
+.sub-title {
+  text-align: center;
+  margin-bottom: 15px;
+  font-size: 20px;
+}
+
+.quiz-box label {
+  display: block;
+  margin-top: 12px;
+  font-weight: 500;
+}
+
+.quiz-box select {
+  width: 100%;
+  padding: 12px;
+  margin-top: 6px;
+  border-radius: 8px;
+  border: 1px solid #ffd5e8;
+  background-color: #fffaff;
+  font-size: 16px;
+}
+
+.quiz-box button {
+  width: 100%;
+  padding: 14px;
+  margin-top: 16px;
+  border: none;
+  border-radius: 10px;
+  background-color: #ff69a6;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.quiz-box button:hover {
+  background-color: #ff4c8e;
+}
+
+.result {
+  background-color: #ffe3ef;
+  padding: 20px;
+  margin-top: 20px;
+  border-radius: 15px;
+}
+
+.divider {
+  margin: 30px 0;
+  border: none;
+  height: 2px;
+  background-color: #ffc9dc;
+}
+
+.center {
+  text-align: center;
+}
+
+/* Face example gambar */
+.undertone-header {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.face-img {
+  width: 100%;
+  max-width: 300px;
+  border-radius: 20px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.15);
+  display: block;
+  margin: 0 auto 15px;
+}
+
+/* Section tiap item makeup */
+.section {
+  background-color: white;
+  padding: 15px;
+  border-radius: 12px;
+  margin-top: 20px;
+  box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.08);
+}
+
+.section h3 {
+  margin-bottom: 10px;
+}
+
+.item-img {
+  width: 100%;
+  max-width: 250px;
+  border-radius: 12px;
+  box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.12);
+  display: block;
+  margin: 0 auto 15px;
+}
+
+.section p {
+  font-size: 15px;
+  line-height: 1.4;
+}

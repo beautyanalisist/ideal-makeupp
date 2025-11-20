@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Rekomendasi Makeup Undertone</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <header>
+    <img src="img/home-cute.png" alt="Cute header" class="header-img" />
+    <h1>Cute Makeup Recommender</h1>
+    <p>Tes undertone & rekomendasi makeup yang cocok untukmu 💄</p>
+  </header>
+
+  <div class="container">
+
+    <!-- Tes Undertone -->
+    <h2 class="sub-title">🌸 Tes Undertone</h2>
+    <div class="quiz-box">
+      <label for="q1">1. Warna urat nadi di pergelangan tanganmu?</label>
+      <select id="q1">
+        <option value="">-- Pilih Jawaban --</option>
+        <option value="cool">Kebiruan / Ungu</option>
+        <option value="warm">Kehijauan</option>
+        <option value="neutral">Campuran</option>
+      </select>
+
+      <label for="q2">2. Perhiasan mana yang terasa lebih “cocok” di kulitmu?</label>
+      <select id="q2">
+        <option value="">-- Pilih Jawaban --</option>
+        <option value="cool">Silver</option>
+        <option value="warm">Gold</option>
+        <option value="neutral">Keduanya</option>
+      </select>
+
+      <label for="q3">3. Warna pakaian mana yang menurutmu paling “menonjolkan” kulitmu?</label>
+      <select id="q3">
+        <option value="">-- Pilih Jawaban --</option>
+        <option value="cool">Warna dingin seperti biru, ungu</option>
+        <option value="warm">Warna hangat seperti kuning, coklat</option>
+        <option value="neutral">Keduanya sama bagus</option>
+      </select>
+
+      <button onclick="runTest()">Lihat Hasil Tes</button>
+    </div>
+
+    <div id="testResult" class="result" style="display: none;"></div>
+
+    <hr class="divider" />
+
+    <!-- Rekomendasi Makeup -->
+    <h2 class="sub-title">💄 Rekomendasi Makeup Berdasarkan Undertone</h2>
+    <label for="undertone">Pilih Undertone Kamu:</label>
+    <select id="undertone">
+      <option value="">-- Pilih Undertone --</option>
+      <option value="cool">Cool ❄️</option>
+      <option value="warm">Warm ☀️</option>
+      <option value="neutral">Neutral 🌸</option>
+    </select>
+
+    <button onclick="getRecommendation()">Lihat Rekomendasi Makeup</button>
+
+    <div id="result" class="result" style="display: none;"></div>
+  </div>
+
+  <script>
+    function runTest() {
+      const q1 = document.getElementById("q1").value;
+      const q2 = document.getElementById("q2").value;
+      const q3 = document.getElementById("q3").value;
+
+      if (!q1 || !q2 || !q3) {
+        alert("Isi semua pertanyaan dulu ya 💗");
+        return;
+      }
+
+      let score = { cool: 0, warm: 0, neutral: 0 };
+      score[q1]++;
+      score[q2]++;
+      score[q3]++;
+
+      // Cari undertone dengan nilai paling tinggi
+      let undertone = "cool";
+      if (score.warm > score.cool && score.warm > score.neutral) undertone = "warm";
+      else if (score.neutral > score.cool && score.neutral > score.warm) undertone = "neutral";
+
+      const imgPath = `img/face/${undertone}-face.png`;
+      const testResult = document.getElementById("testResult");
+      testResult.style.display = "block";
+      testResult.innerHTML = `
+        <div class="undertone-header">
+          <img src="${imgPath}" alt="${undertone} face example" class="face-img" />
+          <h2>Undertone Kamu: <span class="undertone-name">${undertone.toUpperCase()}</span></h2>
+        </div>
+        <p>Scroll ke bawah untuk rekomendasi makeup khusus untuk undertonemu ✨</p>
+      `;
+    }
+
+    function getRecommendation() {
+      const undertone = document.getElementById("undertone").value;
+      const result = document.getElementById("result");
+      if (!undertone) {
+        result.style.display = "block";
+        result.innerHTML = `<b>Pilih undertone terlebih dahulu ya 💗</b>`;
+        return;
+      }
+
+      const data = {
+        cool: {
+          foundation: "Foundation dengan pink / rosy undertone",
+          blush: "Blush pink muda atau berry",
+          lipstick: "Lipstik mauve, plum, berry",
+          eyeshadow: "Eyeshadow silver, rose, lilac"
+        },
+        warm: {
+          foundation: "Foundation dengan golden / yellow undertone",
+          blush: "Blush peach atau coral",
+          lipstick: "Lipstik terracotta atau warm red",
+          eyeshadow: "Eyeshadow gold, bronze, coklat hangat"
+        },
+        neutral: {
+          foundation: "Foundation dengan undertone netral",
+          blush: "Blush rose atau beige",
+          lipstick: "Lipstik nude atau pink natural",
+          eyeshadow: "Eyeshadow earth tone atau soft pink"
+        }
+      };
+
+      const item = data[undertone];
+      const folder = `img/${undertone}`;
+
+      result.style.display = "block";
+      result.innerHTML = `
+        <h2 class="center">Rekomendasi Makeup untuk Undertone ${undertone.toUpperCase()}</h2>
+
+        <div class="section">
+          <h3>Foundation</h3>
+          <img src="${folder}/foundation.png" alt="Foundation ${undertone}" class="item-img" />
+          <p>${item.foundation}</p>
+        </div>
+
+        <div class="section">
+          <h3>Blush</h3>
+          <img src="${folder}/blush.png" alt="Blush ${undertone}" class="item-img" />
+          <p>${item.blush}</p>
+        </div>
+
+        <div class="section">
+          <h3>Lipstick</h3>
+          <img src="${folder}/lipstick.png" alt="Lipstick ${undertone}" class="item-img" />
+          <p>${item.lipstick}</p>
+        </div>
+
+        <div class="section">
+          <h3>Eyeshadow</h3>
+          <img src="${folder}/eyeshadow.png" alt="Eyeshadow ${undertone}" class="item-img" />
+          <p>${item.eyeshadow}</p>
+        </div>
+      `;
+    }
+  </script>
+
+</body>
+</html>
